@@ -1,0 +1,9 @@
+{
+    "require": {
+        "messagebird/php-rest-api": "^1.16",
+        "dompdf/dompdf": "^0.8.3",
+        "phpmailer/phpmailer": "^6.6",
+        "league/csv": "^8.2",
+        "fzaninotto/faker": "^1.9"
+    }
+}

@@ -1,0 +1,31 @@
+.client-slider .single-brand {
+    display: table;
+    height: 80px;
+    width: 100%;
+}
+
+.client-slider .single-brand a {
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.client-slider .single-brand a img {
+    width: auto;
+    margin: 0 auto;
+    opacity: 0.2;
+    -webkit-transition: all 0.4s;
+    -o-transition: all 0.4s;
+    transition: all 0.4s;
+}
+
+.client-slider .single-brand a:hover img {
+    opacity: 1;
+}
+
+.client-slider{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 20px auto!important;
+}

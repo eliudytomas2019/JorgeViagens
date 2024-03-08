@@ -1,0 +1,138 @@
+<?php
+if ($language == "pt"):
+    $page = "Criar novo Registro | {$Ass['name']}";
+elseif ($language == "en"):
+    $page = "Create new Record | {$Ass['name']}";
+else:
+    $page = "Créer un nouvel enregistrement | {$Ass['name']}";
+endif;
+
+include("_app/_Desk/Include/Seo.inc.php");
+?>
+
+<div class="row">
+    &nbsp;&nbsp;<a href="__admin.php?exe=numbers/index&lang=<?= $language; ?>" class="btn btn-primary"><?php
+        if($language == "pt"):
+            echo "Voltar";
+        elseif($language == "fr"):
+            echo "Retourner";
+        else:
+            echo "To go back";
+        endif;
+        ?></a>
+</div><br/>
+
+<div class="card card-default">
+    <div class="card-header">
+        <h3 class="card-title"><?php
+            if($language == "pt"):
+                echo "Criar Novo";
+            elseif($language == "fr"):
+                echo "Créer un nouveau";
+            else:
+                echo "Create news";
+            endif;
+            ?></h3>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <?php
+            $postId = filter_input(INPUT_GET, "postId", FILTER_VALIDATE_FLOAT);
+            $ClienteData = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+            if ($ClienteData && $ClienteData['SendPostFormL']):
+                $Business = new ProjectXP($language);
+                $Business->UpdateNumber($ClienteData, $postId);
+                if($Business->getResult()):
+                    WSError($Business->getError()[0], $Business->getError()[1]);
+                else:
+                    WSError($Business->getError()[0], $Business->getError()[1]);
+                endif;
+            else:
+                $status = 1;
+
+                $Read = new Read();
+                $Read->ExeRead("xp_numbers", "WHERE id=:i ", "i={$postId}");
+
+                if($Read->getResult()):
+                    $ClienteData = $Read->getResult()[0];
+                endif;
+            endif;
+            ?>
+            <form method="post" action="" name="SendPostFormL" enctype="multipart/form-data">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> <?php
+                                if($language == "pt"):
+                                    echo "Número 1";
+                                elseif($language == "fr"):
+                                    echo "Numéro 1";
+                                else:
+                                    echo "Number One";
+                                endif;
+                                ?></label>
+                            <input type="text" class="form-control" value="<?php if (!empty($ClienteData['number_1'])) echo $ClienteData['number_1']; ?>" name="number_1" id="number_1" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> <?php
+                                if($language == "pt"):
+                                    echo "Número 2";
+                                elseif($language == "fr"):
+                                    echo "Numéro 2";
+                                else:
+                                    echo "Number Two";
+                                endif;
+                                ?></label>
+                            <input type="text" class="form-control" value="<?php if (!empty($ClienteData['number_2'])) echo $ClienteData['number_2']; ?>" name="number_2" id="number_2" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> <?php
+                                if($language == "pt"):
+                                    echo "Número 3";
+                                elseif($language == "fr"):
+                                    echo "Numéro 3";
+                                else:
+                                    echo "Number Tree";
+                                endif;
+                                ?></label>
+                            <input type="text" class="form-control" value="<?php if (!empty($ClienteData['number_3'])) echo $ClienteData['number_3']; ?>" name="number_3" id="number_3" placeholder=""/>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label> <?php
+                                if($language == "pt"):
+                                    echo "Número 4";
+                                elseif($language == "fr"):
+                                    echo "Numéro 4";
+                                else:
+                                    echo "Number For";
+                                endif;
+                                ?></label>
+                            <input type="text" class="form-control" value="<?php if (!empty($ClienteData['number_4'])) echo $ClienteData['number_4']; ?>" name="number_4" id="number_4" placeholder=""/>
+                        </div>
+                    </div>
+                </div>
+                <hr/>
+                <div class="row">
+                    <div class="form-footer">
+                        <input type="submit" name="SendPostFormL" class="btn btn-primary" value="<?php
+                        if($language == "pt"):
+                            echo "Guardar";
+                        elseif($language == "fr"):
+                            echo "Sauvegarder";
+                        else:
+                            echo "Save";
+                        endif;
+                        ?>">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
