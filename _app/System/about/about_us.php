@@ -11,5 +11,6 @@ include("_app/Include/About.inc.php");
 include("_app/Include/Missao.inc.php");
 include("_app/Include/Facha.inc.php");
 include("_app/Include/Testemunhos.inc.php");
+include("_app/Include/Clientes.inc.php");
 include("_app/Include/Numbers.inc.php");
 ?>

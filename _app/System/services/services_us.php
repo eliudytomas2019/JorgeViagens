@@ -10,5 +10,6 @@ include("_app/Include/Section.inc.php");
 include("_app/Include/Services.inc.php");
 include("_app/Include/Facha.inc.php");
 include("_app/Include/Testemunhos.inc.php");
+include("_app/Include/Clientes.inc.php");
 include("_app/Include/Numbers.inc.php");
 ?>
