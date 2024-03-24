@@ -34,8 +34,25 @@
 
     <link rel="stylesheet" href="_app/css/reset.css"/>
     <link rel="stylesheet" href="_app/css/preview.css"/>
+
+    <style>
+        #whatsapp-button {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: #25D366;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 50px;
+            color: white;
+            font-size: 24px;
+        }
+    </style>
 </head>
-<body>
+<body onscroll="scrollFunction()">
 <?php
     if (isset($getexe)):
         $linkto = explode('/', $getexe);
@@ -60,6 +77,21 @@
     endif;
 
 ?>
+
+<a href="<?= $Ass['whatsapp']; ?>" target="_blank" id="whatsapp-button">
+    <i class="icon-whatsapp"></i>
+</a>
+
+<script>
+    function scrollFunction() {
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            document.getElementById("whatsapp-button").style.display = "block";
+        } else {
+            document.getElementById("whatsapp-button").style.display = "none";
+        }
+    }
+</script>
+
 
 <script src="js/jquery.min.js"></script>
 <script src="js/jquery-migrate-3.0.1.min.js"></script>
